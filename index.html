@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Indicadores del Chaco - DiPIET</title>
+  <link rel="stylesheet" href="lib/ol.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #2f2f2f;
+      color: #fff;
+    }
+
+    /* Header estilo Gobierno del Chaco */
+    header {
+      background-color: #2f2f2f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    header img {
+      height: 55px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+    }
+
+    .filter-btn {
+      background: #444;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #6c63ff;
+    }
+
+    /* Mapa */
+    #map {
+      width: 100%;
+      height: calc(100vh - 80px);
+    }
+
+    /* Popup */
+    .ol-popup {
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #cccccc;
+      bottom: 12px;
+      left: -50px;
+      min-width: 220px;
+      font-size: 13px;
+      color: black;
+    }
+
+    .ol-popup h3 {
+      margin: 0 0 5px 0;
+      font-size: 16px;
+      color: #007bff;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+  <img src="LogoFondoBlanco.png" alt="Gobierno del Chaco">
+
+  <h1 class="titulo-header">Censo Nacional Año 2022</h1>
+
+  <div class="filters">
+    <button class="filter-btn active" data-layer="CobSalud2022Dptos.geojson">Cobertura de salud</button>
+    <button class="filter-btn" data-layer="poblacion_por_edades_dptos.geojson">Datos demográficos</button>
+    <button class="filter-btn" data-layer="Empleabilidad.geojson">Empleabilidad</button>
+    <button class="filter-btn" data-layer="NivelInstruccion.geojson">Nivel de instrucción adultos</button>
+  </div>
+</header>
+
+
+  <div id="map"></div>
+  <div id="popup" class="ol-popup"></div>
+
+  <script src="lib/dist/ol.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
